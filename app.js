@@ -12,12 +12,17 @@ async function getData() {
   try {
     let res = await axios.get(url);
     data = res.data;
-    fullData = data.todos;
+    let fullData = data.todos;
     console.log(fullData);
+
 
     fullData.forEach(function (elements) {
       let newElement = document.createElement("li");
       newElement.innerHTML = `<input type="checkbox" /> ${elements.todo}`;
+      // console.log(newElement);
+      if (elements.completed == true) {
+        newElement.classList.toggle("line-through");
+      }
 
       todosObject[key] = elements.todo;
       key = key + 1;
