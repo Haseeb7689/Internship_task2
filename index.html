@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <div class="container">
+      <div class="button-container">
+        <button
+          class="top-button clear-storage"
+          style="
+            background-color: rgb(200, 200, 36);
+            color: White;
+            font-weight: bold;
+            border-radius: 0.3rem;
+            border: 1px solid white;
+            padding: 10px;
+          "
+        >
+          Clear Storage
+        </button>
+        <button
+          class="top-button delete"
+          style="
+            background-color: rgb(255, 0, 0);
+            color: White;
+            font-weight: bold;
+            border-radius: 0.3rem;
+            border: 1px solid white;
+            padding: 10px;
+          "
+        >
+          Delete
+        </button>
+
+    </button>
+    <button
+      class="top-button taskComplete"
+      style="
+        background-color: rgb(5, 207, 39);
+        color: White;
+        font-weight: bold;
+        border-radius: 0.3rem;
+        border: 1px solid white;
+        padding: 10px;
+      "
+    >
+      Task Completed
+    </button>
+
+      </div>
+
+      <div class="add-item">
+        <label for="item-input">
+          <h4><b> Add item </b></h4>
+        </label>
+        <input type="text" id="item-input" placeholder="Press Enter to add" />
+      </div>
+
+      <div class="bottom-list">
+        <ul class="content-list">
+          
+        </ul>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
