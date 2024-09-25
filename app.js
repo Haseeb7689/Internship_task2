@@ -7,14 +7,14 @@ let ul = document.querySelector(".content-list");
 const url = "https://jsonplaceholder.typicode.com/todos";
 
 let arrTodos = [];
-let todosObject = {};
+// let todosObject = {};
 
 async function getData() {
   try {
     let res = await axios.get(url);
 
     data = res.data;
-    console.log(data);
+    // console.log(data);
 
     for (let i = 0; i < data.length; i++) {
       arrTodos[i] = data[i];
@@ -27,7 +27,7 @@ async function getData() {
         newElement.classList.toggle("line-through");
       }
 
-      todosObject = { arrTodos };
+      // todosObject = { arrTodos };
 
       ul.appendChild(newElement);
     }
@@ -48,7 +48,12 @@ inputField.addEventListener("keydown", function (event) {
       let newElement = document.createElement("li");
       newElement.innerHTML = `<input type="checkbox" /> ${inputText}`;
 
-      arrTodos.push(inputText);
+      arrTodos.push({
+        id: arrTodos.length + 1,
+        completed: true,
+        inputText,
+        userID: arrTodos.length + 2,
+      });
 
       // todosObject = { arrTodos };
 
@@ -57,7 +62,7 @@ inputField.addEventListener("keydown", function (event) {
     } else {
       alert("Please Enter Task");
     }
-    localStorage.setItem(`todos`, JSON.stringify(todosObject));
+    localStorage.setItem(`todos`, JSON.stringify(arrTodos));
   }
 });
 
