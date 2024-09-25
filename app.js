@@ -4,33 +4,35 @@ let taskComplete = document.querySelector(".taskComplete");
 let inputField = document.querySelector("#item-input");
 let ul = document.querySelector(".content-list");
 
-const url = "https://dummyjson.com/todos";
+const url = "https://jsonplaceholder.typicode.com/todos";
+
+let arrTodos = [];
+let todosObject = {};
 
 async function getData() {
-  let key = 1;
-  let todosObject = {};
   try {
     let res = await axios.get(url);
+
     data = res.data;
-    let fullData = data.todos;
-    console.log(fullData);
+    console.log(data);
 
+    for (let i = 0; i < data.length; i++) {
+      arrTodos[i] = data[i];
+      console.log(arrTodos[i]);
 
-    fullData.forEach(function (elements) {
       let newElement = document.createElement("li");
-      newElement.innerHTML = `<input type="checkbox" /> ${elements.todo}`;
-      // console.log(newElement);
-      if (elements.completed == true) {
+      newElement.innerHTML = `<input type="checkbox" /> ${arrTodos[i].title}`;
+
+      if (arrTodos[i].completed == true) {
         newElement.classList.toggle("line-through");
       }
 
-      todosObject[key] = elements.todo;
-      key = key + 1;
+      todosObject = { arrTodos };
 
       ul.appendChild(newElement);
-    });
+    }
 
-    localStorage.setItem("todos", JSON.stringify(todosObject));
+    localStorage.setItem("todos", JSON.stringify(arrTodos));
   } catch (error) {
     console.log("Error occured - ", error);
   }
@@ -38,8 +40,6 @@ async function getData() {
 
 window.onload = getData;
 
-let key = 31;
-let todosObject = {};
 inputField.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     inputText = inputField.value.trim();
@@ -48,22 +48,21 @@ inputField.addEventListener("keydown", function (event) {
       let newElement = document.createElement("li");
       newElement.innerHTML = `<input type="checkbox" /> ${inputText}`;
 
-      todosObject[key] = inputText;
+      arrTodos.push(inputText);
 
-      key = key + 1;
+      // todosObject = { arrTodos };
+
       ul.appendChild(newElement);
       inputField.value = "";
     } else {
       alert("Please Enter Task");
     }
-    localStorage.setItem(`ntodos`, JSON.stringify(todosObject));
+    localStorage.setItem(`todos`, JSON.stringify(todosObject));
   }
 });
 
 //delete your added data on refreshy
-window.onbeforeunload = function () {
-  localStorage.removeItem("ntodos");
-};
+// window.onbeforeunload = function () {};
 
 deleteButton.addEventListener("click", function () {
   let ul = document.querySelector(".content-list");
