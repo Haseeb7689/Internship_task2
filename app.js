@@ -50,7 +50,7 @@ inputField.addEventListener("keydown", function (event) {
 
       arrTodos.push({
         id: arrTodos.length + 1,
-        completed: true,
+        completed: false,
         inputText,
         userID: arrTodos.length + 2,
       });
