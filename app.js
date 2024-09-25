@@ -51,7 +51,7 @@ inputField.addEventListener("keydown", function (event) {
       arrTodos.push({
         id: arrTodos.length + 1,
         completed: false,
-        inputText,
+        title: inputText,
         userID: arrTodos.length + 2,
       });
 
