@@ -7,27 +7,21 @@ let ul = document.querySelector(".content-list");
 const url = "https://jsonplaceholder.typicode.com/todos";
 
 let arrTodos = [];
-// let todosObject = {};
 
 async function getData() {
   try {
     let res = await axios.get(url);
 
     data = res.data;
-    // console.log(data);
 
     for (let i = 0; i < data.length; i++) {
       arrTodos[i] = data[i];
-      console.log(arrTodos[i]);
-
       let newElement = document.createElement("li");
       newElement.innerHTML = `<input type="checkbox" /> ${arrTodos[i].title}`;
 
       if (arrTodos[i].completed == true) {
         newElement.classList.toggle("line-through");
       }
-
-      // todosObject = { arrTodos };
 
       ul.appendChild(newElement);
     }
@@ -55,8 +49,6 @@ inputField.addEventListener("keydown", function (event) {
         userID: arrTodos.length + 2,
       });
 
-      // todosObject = { arrTodos };
-
       ul.appendChild(newElement);
       inputField.value = "";
     } else {
@@ -66,19 +58,26 @@ inputField.addEventListener("keydown", function (event) {
   }
 });
 
-//delete your added data on refreshy
-// window.onbeforeunload = function () {};
-
 deleteButton.addEventListener("click", function () {
   let ul = document.querySelector(".content-list");
   let listItems = ul.querySelectorAll("li");
 
-  listItems.forEach((items) => {
-    let checkbox = items.querySelector("input[type=checkbox]");
+  for (items of listItems) {
+    let checkbox = items.querySelector("input[type=checkbox");
     if (checkbox.checked) {
+      let itemText = items.textContent.trim();
+
+      for (i = 0; i < arrTodos.length; i++) {
+        if (arrTodos[i].title == itemText) {
+          arrTodos.splice(i, 1);
+          break;
+        }
+      }
+
       ul.removeChild(items);
+      localStorage.setItem("todos", JSON.stringify(arrTodos));
     }
-  });
+  }
 });
 
 clearStorage.addEventListener("click", function () {
