@@ -21,12 +21,15 @@
 
 
 **How to run:**
+1. **Clone the Repository**
+   git clone https://github.com/haseeb7689/Internship_task2.git
+  
+2. **Navigate to the Project Folder**
+   cd Internship_task2
 
-Clone the Repository git clone https://github.com/haseeb7689/Internship_task2.git
-Navigate to the Project Folder 
-cd Internship_task2
-Run 
-start index.html
+3. **Run**
+     start index.html
+
 That’s it — no server setup or installation needed.
 
 
