@@ -20,6 +20,7 @@
 * **LocalStorage** – To persist tasks between sessions
 
 
-## 🚀 How to Run / Setup Locally
+## How to Run / Setup
+Live link: https://haseeb7689.github.io/Internship_task2/
 
 
