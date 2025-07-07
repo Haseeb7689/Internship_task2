@@ -20,7 +20,13 @@
 * **LocalStorage** – To persist tasks between sessions
 
 
-## How to Run / Setup
-Live link: https://haseeb7689.github.io/Internship_task2/
+**How to run:**
+
+Clone the Repository git clone https://github.com/haseeb7689/Internship_task2.git
+Navigate to the Project Folder 
+cd Internship_task2
+Run 
+start index.html
+That’s it — no server setup or installation needed.
 
 
